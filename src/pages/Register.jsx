@@ -8,13 +8,16 @@ function Login() {
   const [errors, setErrors] = useState([])
 
   const submit = (e) => {
-    e.preventDefault();
     setErrors([]);
+    e.preventDefault();
     register({ name: name, email: email, password: password }).then((r) => {
-      if(r.data.errors){
-        setErrors(r.data.errors)
+        localStorage.setItem('token', JSON.stringify(response.data.token))
+        navigate('/Dashboard')
+    }).catch((err) => {
+      if(err.response){
+        setErrors(Object.values(err.response.data.errors).flat());
       }
-    });
+    })
   };
 
   return (
@@ -53,15 +56,10 @@ function Login() {
           />
         </div>
         <input type="submit" />
-
-        {errors.length > 0 && (
-          <>
-          <p>error</p>
-          {errors.map((error, index) => (
-            <p key={index}>{error}</p>
-          )) 
-          }
-          </>
+        {errors.length > 0 ? (
+          errors.map((error, index) => <p key={index}>{error}</p>)
+        ) : (
+          <p></p>
         )}
       </form>
     </>
