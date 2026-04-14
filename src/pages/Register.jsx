@@ -1,17 +1,19 @@
 import { useState } from "react";
 import { register } from "../services/authService";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState([])
+  const [errors, setErrors] = useState([]);
+  const navigate = useNavigate();
 
   const submit = (e) => {
     setErrors([]);
     e.preventDefault();
     register({ name: name, email: email, password: password }).then((r) => {
-        localStorage.setItem('token', JSON.stringify(response.data.token))
+        localStorage.setItem('token', JSON.stringify(r.data.token))
         navigate('/Dashboard')
     }).catch((err) => {
       if(err.response){
