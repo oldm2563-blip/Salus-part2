@@ -1,17 +1,28 @@
 import { useState } from "react";
 import { login } from "../services/authService";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const [errors, setErrors] = useState([]);
+  const navigate = useNavigate();
 
   const submit = (e) => {
+    setError('');
     setErrors([]);  
     e.preventDefault();
     login({ email, password })
       .then((response) => {
-        console.log(response.data);
+        if(!response.data.token){
+          setError('ur Credentiels are wrong')
+        }
+        else{
+         localStorage.setItem('token', JSON.stringify(response.data.token))
+         navigate('/Dashboard')
+        }
+        
       })
       .catch((err) => {
         if (err.response) {
@@ -50,6 +61,13 @@ function Login() {
         ) : (
           <p></p>
         )}
+        {error ? (
+          <p>{error}</p>
+        )
+          : (
+            <p></p>
+          )
+      }
       </form>
     </>
   );
