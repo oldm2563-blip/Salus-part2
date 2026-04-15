@@ -1,19 +1,14 @@
 import axios from 'axios';
+ 
+const APP_URL = 'http://16.171.43.223/api'
+
+const token = "41|yVLExfbUTOQI45oKU4UHRQFLJ1Rc3haWuVVcWrtW4804db4e"; 
 
 const api = axios.create({
-  baseURL: 'http://16.171.43.223/api',
+  baseURL: APP_URL,
   headers: {
-    'Content-Type': 'application/json',
-    'Accept': 'application/json',
+       Authorization : `Bearer ${token}`
   },
-});
-
-api.interceptors.request.use((config) => {
-  const token = localStorage.getItem('token'); 
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
-  }
-  return config;
 });
 
 export default api;
