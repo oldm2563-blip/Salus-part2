@@ -1,5 +1,4 @@
 
-
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -17,6 +16,10 @@ function App() {
 
           <Route element={<ProtectedRoutes/>}>
               <Route path="/Dashboard" element={<Dashboard />} />
+              <Route path='/Generate_advice' element={<Generate_advice/>}/>
+              <Route path='/appointments' element={<List_appointments/>}/>
+              <Route path='/Create_appointments' element={<Create_appointments/>}/>
+              <Route path='/Advice_history' element={<Advice_history/>}/>
           </Route>
           
         </Routes>
@@ -26,5 +29,6 @@ function App() {
 }
 
 export default App;
+
 
 
