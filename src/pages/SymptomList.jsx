@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import api from "../services/api.js";
+import api from "../services/axio.js";
 import EditSymptom from "./EditSymptom";
 import DeleteSymptom from "./DeleteSymptom";
 
@@ -8,11 +8,12 @@ function SymptomList() {
   const [editingSymptom, setEditingSymptom] = useState(null);
 
   const fetchSymptoms = () => {
-    api.get("/symptoms")
-      .then(res => {
+    api
+      .get("/symptoms")
+      .then((res) => {
         setSymptoms(res.data.data);
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
   };
@@ -35,24 +36,19 @@ function SymptomList() {
         />
       )}
 
-      
       {symptoms.map((s) => (
-        <div key={s.id} style={{ border: "1px solid #ccc", margin: "10px", padding: "10px" }}>
+        <div
+          key={s.id}
+          style={{ border: "1px solid #ccc", margin: "10px", padding: "10px" }}
+        >
           <h1>{s.id}</h1>
           <h3>{s.name}</h3>
           <p>{s.severity}</p>
           <p>{s.description}</p>
 
-          
-          <button onClick={() => setEditingSymptom(s)}>
-            Edit
-          </button>
+          <button onClick={() => setEditingSymptom(s)}>Edit</button>
 
-          
-          <DeleteSymptom
-            id={s.id}
-            onSuccess={fetchSymptoms}
-          />
+          <DeleteSymptom id={s.id} onSuccess={fetchSymptoms} />
         </div>
       ))}
     </div>
