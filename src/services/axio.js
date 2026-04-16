@@ -4,11 +4,11 @@ const APP_URL = 'http://16.171.43.223/api'
 
 const token = JSON.parse(localStorage.getItem("token")); 
 
-const api = axios.create({
+const axio = axios.create({
   baseURL: APP_URL,
   headers: {
        Authorization : `Bearer ${token}`
   },
 });
 
-export default api;
+export default axio;

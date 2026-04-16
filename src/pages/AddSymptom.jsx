@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import api from "../services/api";
+import api from "../services/axio";
 import { toast } from "react-toastify";
 
 function AddSymptom() {
@@ -9,11 +9,12 @@ function AddSymptom() {
   const [description, setDescription] = useState("");
 
   const fetchSymptoms = () => {
-    api.get("/symptoms")
-      .then(res => {
+    api
+      .get("/symptoms")
+      .then((res) => {
         setSymptoms(res.data.data);
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   };
 
   useEffect(() => {
@@ -27,10 +28,11 @@ function AddSymptom() {
       name,
       severity,
       description,
-      date_recorded: new Date().toISOString().split("T")[0]
+      date_recorded: new Date().toISOString().split("T")[0],
     };
 
-    api.post("/symptoms", data)
+    api
+      .post("/symptoms", data)
       .then(() => {
         toast.success("Symptom added successfully");
         fetchSymptoms();
@@ -38,7 +40,7 @@ function AddSymptom() {
         setSeverity("mild");
         setDescription("");
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
         toast.error("Error adding symptom");
       });
@@ -56,10 +58,7 @@ function AddSymptom() {
           onChange={(e) => setName(e.target.value)}
         />
 
-        <select
-          value={severity}
-          onChange={(e) => setSeverity(e.target.value)}
-        >
+        <select value={severity} onChange={(e) => setSeverity(e.target.value)}>
           <option value="mild">Mild</option>
           <option value="moderate">Moderate</option>
           <option value="severe">Severe</option>

@@ -1,20 +1,20 @@
-import api from "../services/api";
+import api from "../services/axio";
 import { toast } from "react-toastify";
 
-function DeleteSymptom({id, onSuccess}) {
-
+function DeleteSymptom({ id, onSuccess }) {
   const handleDelete = () => {
-  const confirmDelete = window.confirm("Are you sure?");
+    const confirmDelete = window.confirm("Are you sure?");
 
-  if (!confirmDelete) return;
+    if (!confirmDelete) return;
 
-  api.delete(`/symptoms/${id}`)
-    .then(() => {
-      toast.success("Deleted successfully");
-      onSuccess();
-    })
-    .catch(err => console.log(err));
-};
+    api
+      .delete(`/symptoms/${id}`)
+      .then(() => {
+        toast.success("Deleted successfully");
+        onSuccess();
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <button onClick={handleDelete} style={{ color: "red" }}>

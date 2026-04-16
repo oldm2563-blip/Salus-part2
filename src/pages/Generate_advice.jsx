@@ -8,9 +8,12 @@ const [last_advice,setlast_advice] = useState("");
 
 const fetchAppointments = () => {
 api.get("/ai/last-advice").then(response => {
-     console.log(response.data.data)
+    if(response.data.data){
+        console.log(response.data.data)
      setlast_advice(response.data.data)
-}).catch(err => {
+    }
+     
+}).catch(err => {zc
           console.log(err.response)
 })
 }
