@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 function ManageDoctors() {
   return (
-    <BrowserRouter>
       <nav>
         <Link to="/doctors">Doctors List</Link>
         {" | "}
@@ -12,7 +11,6 @@ function ManageDoctors() {
         {" | "}
         <Link to="/"> Back to Dash</Link>
       </nav>
-    </BrowserRouter>
   );
 }
 export default ManageDoctors;

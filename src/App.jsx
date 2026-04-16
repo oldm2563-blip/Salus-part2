@@ -14,21 +14,27 @@ import Dash from "./pages/Dash";
 import ManageDoctors from "./pages/ManageDoctors";
 import SymptomList from "./pages/SymptomList";
 import AddSymptom from "./pages/AddSymptom";
+import { useState } from "react";
 
 function App() {
+  const [iAuth, setIAuth] = useState(() => {
+    const auth = localStorage.getItem("token");
+    return JSON.parse(auth) || ""
+  })
   const isAuth = JSON.parse(localStorage.getItem("token"));
   return (
     <>
-      <ManageDoctors />
+      
       <BrowserRouter>
+        {iAuth ? <ManageDoctors /> : null}
         <Routes>
           <Route
             path="/login"
-            element={isAuth ? <Navigate to="/Dashboard" /> : <Login />}
+            element={iAuth ? <Navigate to="/Dashboard" /> : <Login setIAuth={setIAuth} />}
           />
           <Route
             path="/Register"
-            element={isAuth ? <Navigate to="/Dashboard" /> : <Register />}
+            element={iAuth ? <Navigate to="/Dashboard" /> : <Register />}
           />
 
           <Route element={<ProtectedRoutes />}>

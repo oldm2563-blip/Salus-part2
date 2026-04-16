@@ -2,7 +2,7 @@ import { useState } from "react";
 import { login } from "../services/authService";
 import { useNavigate } from "react-router-dom";
 
-function Login() {
+function Login({setIAuth}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -20,6 +20,7 @@ function Login() {
         }
         else{
          localStorage.setItem('token', JSON.stringify(response.data.token))
+         setIAuth(true);
          navigate('/Dashboard')
         }
         
