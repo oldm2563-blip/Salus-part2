@@ -30,6 +30,10 @@ function App() {
         {iAuth ? <Header setIAuth={setIAuth} /> : null}
         <Routes>
           <Route
+            path="/"
+            element={iAuth ? <Navigate to="/Dashboard" /> : <Navigate to="/Login" />}
+          />
+          <Route
             path="/login"
             element={iAuth ? <Navigate to="/Dashboard" /> : <Login setIAuth={setIAuth} />}
           />
@@ -52,6 +56,7 @@ function App() {
             <Route path="/search" element={<Search />} />
             <Route path="/SymptomList" element={<SymptomList />} />
             <Route path="/AddSymptom" element={<AddSymptom />} />
+            
           </Route>
         </Routes>
         </div>
