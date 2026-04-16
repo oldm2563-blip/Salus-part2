@@ -14,6 +14,7 @@ import Header from "./pages/Header";
 import SymptomList from "./pages/SymptomList";
 import AddSymptom from "./pages/AddSymptom";
 import { useState } from "react";
+import "./App.css"
 
 function App() {
   const [iAuth, setIAuth] = useState(() => {
@@ -25,7 +26,8 @@ function App() {
     <>
       
       <BrowserRouter>
-        {iAuth ? <Header /> : null}
+      <div className="app-container">
+        {iAuth ? <Header setIAuth={setIAuth} /> : null}
         <Routes>
           <Route
             path="/login"
@@ -33,7 +35,7 @@ function App() {
           />
           <Route
             path="/Register"
-            element={iAuth ? <Navigate to="/Dashboard" /> : <Register />}
+            element={iAuth ? <Navigate to="/Dashboard" /> : <Register setIAuth={setIAuth}/>}
           />
 
           <Route element={<ProtectedRoutes />}>
@@ -52,6 +54,7 @@ function App() {
             <Route path="/AddSymptom" element={<AddSymptom />} />
           </Route>
         </Routes>
+        </div>
       </BrowserRouter>
     </>
   );
