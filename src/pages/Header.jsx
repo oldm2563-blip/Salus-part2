@@ -22,6 +22,8 @@ function Header() {
       <Link to="/Generate_advice"> Generate_advice</Link>
        {" | "}
       <Link to="/Create_appointments"> Create_appointments</Link>
+          {" | "}
+      <Link to="/appointments"> List_appointments</Link>
     </nav>
   );
 }
