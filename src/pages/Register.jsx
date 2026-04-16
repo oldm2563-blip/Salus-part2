@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { register } from "../services/authService";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-function Login() {
+function Login({setIAuth}) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -13,8 +14,9 @@ function Login() {
     setErrors([]);
     e.preventDefault();
     register({ name: name, email: email, password: password }).then((r) => {
-        localStorage.setItem('token', JSON.stringify(r.data.token))
-        navigate('/Dashboard')
+        localStorage.setItem('token', JSON.stringify(r.data.token));
+        setIAuth(true);
+        navigate('/Dashboard');
     }).catch((err) => {
       if(err.response){
         setErrors(Object.values(err.response.data.errors).flat());
@@ -63,6 +65,10 @@ function Login() {
         ) : (
           <p></p>
         )}
+        <p>
+        already have an account?
+        <Link to="/Login">Login</Link>
+      </p>
       </form>
     </>
   );

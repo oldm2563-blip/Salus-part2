@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { login } from "../services/authService";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Login({setIAuth}) {
   const [email, setEmail] = useState("");
@@ -69,6 +70,10 @@ function Login({setIAuth}) {
             <p></p>
           )
       }
+      <p>
+        Don't have an account?
+        <Link to="/Register">Register</Link>
+      </p>
       </form>
     </>
   );

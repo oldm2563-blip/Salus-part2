@@ -1,30 +1,39 @@
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Navigate, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
+function Header({setIAuth} ) {
 
-function Header() {
+const navigate = useNavigate()
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    setIAuth(false);
+    navigate('/login')
+  }
+
   return (
-    <nav>
-      {" | "}
-      <Link to="/Dashboard"> Home</Link>
-      {" | "}
-      <Link to="/doctors">Doctors List</Link>
-      {" | "}
-      <Link to="/search"> Search A Doctor</Link>
 
-      {" | "}
-      <Link to="/SymptomList">SymptomList List</Link>
-      {" | "}
-      <Link to="/AddSymptom">AddSymptom</Link>
-      {" | "}
-      <Link to="/Advice_history"> Advice_history</Link>
-       {" | "}
-      <Link to="/Generate_advice"> Generate_advice</Link>
-       {" | "}
-      <Link to="/Create_appointments"> Create_appointments</Link>
-          {" | "}
-      <Link to="/appointments"> List_appointments</Link>
-    </nav>
+  <nav className="navbar">
+    <div className="nav-left">
+      <Link to="/Dashboard" className="logo">HealthApp</Link>
+
+      <div className="nav-links">
+        <Link to="/doctors">Doctors</Link>
+        <Link to="/search">Search</Link>
+        <Link to="/SymptomList">Symptoms</Link>
+        <Link to="/AddSymptom">Add</Link>
+        <Link to="/Advice_history">History</Link>
+        <Link to="/Generate_advice">AI</Link>
+        <Link to="/Create_appointments">Create</Link>
+        <Link to="/appointments">Appointments</Link>
+      </div>
+    </div>
+
+    <button onClick={logout} className="logout-btn">
+      Logout
+    </button>
+  </nav>
+
   );
 }
 export default Header;
