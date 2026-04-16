@@ -9,7 +9,7 @@ function DoctorDeatail() {
   const { id } = useParams();
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    const token = JSON.parse(localStorage.getItem("token"));
 
     axios
       .get("http://16.171.43.223/api/doctors/" + id, {

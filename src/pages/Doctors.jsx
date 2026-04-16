@@ -8,7 +8,7 @@ function Doctors(){
     const [doctors , setDoctors]= useState([]);
 
     useEffect(()=>{
-        const token = localStorage.getItem('token')
+        const token = JSON.parse(localStorage.getItem("token"))
 
         axios.get('http://16.171.43.223/api/doctors' ,{
             headers:{
@@ -17,6 +17,10 @@ function Doctors(){
         })
         .then((response)=>{
             setDoctors(response.data.data)
+        }).catch(err =>{
+            if(err.response){
+                console.log(err.response.data);
+            }
         })
     },[])
 

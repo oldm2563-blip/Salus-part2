@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import api from "../services/api.js";
-import EditSymptom from "./EditSymptom.jsx";
-import DeleteSymptom from "./DeleteSymptom.jsx";
+import EditSymptom from "./EditSymptom";
+import DeleteSymptom from "./DeleteSymptom";
 
 function SymptomList() {
   const [symptoms, setSymptoms] = useState([]);
