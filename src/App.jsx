@@ -10,8 +10,7 @@ import Advice_history from "./pages/Advice_history";
 import Doctors from "./pages/Doctors";
 import DoctorDeatail from "./pages/DoctorDetailPage";
 import Search from "./pages/Search";
-import Dash from "./pages/Dash";
-import ManageDoctors from "./pages/ManageDoctors";
+import Header from "./pages/Header";
 import SymptomList from "./pages/SymptomList";
 import AddSymptom from "./pages/AddSymptom";
 import { useState } from "react";
@@ -26,7 +25,7 @@ function App() {
     <>
       
       <BrowserRouter>
-        {iAuth ? <ManageDoctors /> : null}
+        {iAuth ? <Header /> : null}
         <Routes>
           <Route
             path="/login"
@@ -46,7 +45,6 @@ function App() {
               element={<Create_appointments />}
             />
             <Route path="/Advice_history" element={<Advice_history />} />
-            <Route path="/" element={<Dash />} />
             <Route path="/doctors" element={<Doctors />} />
             <Route path="/doctors/:id" element={<DoctorDeatail />} />
             <Route path="/search" element={<Search />} />
