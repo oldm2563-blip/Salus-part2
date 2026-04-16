@@ -24,34 +24,34 @@ function SymptomList() {
 
   return (
     <div>
-      <h1>Symptoms</h1>
+  <h1>Symptoms</h1>
 
-      {editingSymptom && (
-        <EditSymptom
-          symptom={editingSymptom}
-          onSuccess={() => {
-            setEditingSymptom(null);
-            fetchSymptoms();
-          }}
-        />
-      )}
+  {editingSymptom && (
+    <EditSymptom
+      symptom={editingSymptom}
+      onSuccess={() => {
+        setEditingSymptom(null);
+        fetchSymptoms();
+      }}
+    />
+  )}
 
-      {symptoms.map((s) => (
-        <div
-          key={s.id}
-          style={{ border: "1px solid #ccc", margin: "10px", padding: "10px" }}
-        >
-          <h1>{s.id}</h1>
-          <h3>{s.name}</h3>
-          <p>{s.severity}</p>
-          <p>{s.description}</p>
+  <div className="list">
+    {symptoms.map((s) => (
+      <div key={s.id} className="card">
+        <h3>{s.name}</h3>
+        <p><strong>ID:</strong> {s.id}</p>
+        <p><strong>Severity:</strong> {s.severity}</p>
+        <p><strong>Description:</strong> {s.description}</p>
 
+        <div className="actions">
           <button onClick={() => setEditingSymptom(s)}>Edit</button>
-
           <DeleteSymptom id={s.id} onSuccess={fetchSymptoms} />
         </div>
-      ))}
-    </div>
+      </div>
+    ))}
+  </div>
+</div>
   );
 }
 

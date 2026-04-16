@@ -17,7 +17,7 @@ function DeleteSymptom({ id, onSuccess }) {
   };
 
   return (
-    <button onClick={handleDelete} style={{ color: "red" }}>
+    <button onClick={handleDelete} className="danger">
       Delete
     </button>
   );

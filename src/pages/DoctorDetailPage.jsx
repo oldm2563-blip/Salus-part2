@@ -23,18 +23,18 @@ function DoctorDeatail() {
   }, []);
 
   
-  if (doctor === null) return <p>Loading .....</p>;
+  if (doctor === null) return <p className="loading">Loading .....</p>;
 
-  return (
-    <div>
-      <h1>Details ...</h1>
-      <p>Name: {doctor.name}</p>
-      <p>Speciality: {doctor.specialty}</p>
-      <p>City: {doctor.city}</p>
-      <p>consultation_price: {doctor.consultation_price}</p>
-      <p>available_days : {doctor.available_days}</p>
-      <p>yearsofexperience : {doctor.yearsofexperience}</p>
-    </div>
-  );
+return (
+  <div className="card">
+    <h1>Doctor Details</h1>
+    <p><strong>Name:</strong> {doctor.name}</p>
+    <p><strong>Speciality:</strong> {doctor.specialty}</p>
+    <p><strong>City:</strong> {doctor.city}</p>
+    <p><strong>Consultation price:</strong> {doctor.consultation_price}</p>
+    <p><strong>Available days:</strong> {doctor.available_days}</p>
+    <p><strong>Years of experience:</strong> {doctor.yearsofexperience}</p>
+  </div>
+);
 }
 export default DoctorDeatail;

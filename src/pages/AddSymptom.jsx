@@ -48,40 +48,50 @@ function AddSymptom() {
 
   return (
     <div>
-      <h1>Symptoms</h1>
+  <h1>Add Symptom</h1>
 
-      <form onSubmit={handleAdd}>
-        <input
-          type="text"
-          placeholder="Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
+  <form onSubmit={handleAdd}>
+    <label>Name</label>
+    <input
+      type="text"
+      placeholder="Enter symptom name"
+      value={name}
+      onChange={(e) => setName(e.target.value)}
+    />
 
-        <select value={severity} onChange={(e) => setSeverity(e.target.value)}>
-          <option value="mild">Mild</option>
-          <option value="moderate">Moderate</option>
-          <option value="severe">Severe</option>
-        </select>
+    <label>Severity</label>
+    <select
+      value={severity}
+      onChange={(e) => setSeverity(e.target.value)}
+    >
+      <option value="mild">Mild</option>
+      <option value="moderate">Moderate</option>
+      <option value="severe">Severe</option>
+    </select>
 
-        <input
-          type="text"
-          placeholder="Description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
+    <label>Description</label>
+    <input
+      type="text"
+      placeholder="Enter description"
+      value={description}
+      onChange={(e) => setDescription(e.target.value)}
+    />
 
-        <button type="submit">Add</button>
-      </form>
+    <button type="submit">Add Symptom</button>
+  </form>
 
-      {symptoms.map((s) => (
-        <div key={s.id}>
-          <h3>{s.name}</h3>
-          <p>{s.severity}</p>
-          <p>{s.description}</p>
-        </div>
-      ))}
-    </div>
+  <h2 className="section-title">Symptoms List</h2>
+
+  <div className="list">
+    {symptoms.map((s) => (
+      <div key={s.id} className="card">
+        <h3>{s.name}</h3>
+        <p><strong>Severity:</strong> {s.severity}</p>
+        <p><strong>Description:</strong> {s.description}</p>
+      </div>
+    ))}
+  </div>
+</div>
   );
 }
 

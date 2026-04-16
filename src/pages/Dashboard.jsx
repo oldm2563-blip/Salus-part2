@@ -46,9 +46,19 @@ function Dashboard() {
   }, []);
   return (
     <>
-      <h1>Welcome back {name}</h1>
-      <p>Total appointments: {appointments.length}</p>
-      <p>Total symptoms: {symptoms.length}</p>
+       <h1>Welcome back {name}</h1>
+
+  <div className="stats">
+    <div className="stat-card">
+      <h3>Total appointments</h3>
+      <p>{appointments.length}</p>
+    </div>
+
+    <div className="stat-card">
+      <h3>Total symptoms</h3>
+      <p>{symptoms.length}</p>
+    </div>
+  </div>
     </>
   );
 }
