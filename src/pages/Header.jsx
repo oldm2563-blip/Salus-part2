@@ -21,10 +21,10 @@ const navigate = useNavigate()
         <Link to="/doctors">Doctors</Link>
         <Link to="/search">Search</Link>
         <Link to="/SymptomList">Symptoms</Link>
-        <Link to="/AddSymptom">Add</Link>
+        <Link to="/AddSymptom">Add Symptom</Link>
         <Link to="/Advice_history">History</Link>
         <Link to="/Generate_advice">AI</Link>
-        <Link to="/Create_appointments">Create</Link>
+        <Link to="/Create_appointments">Add Appointment</Link>
         <Link to="/appointments">Appointments</Link>
       </div>
     </div>
